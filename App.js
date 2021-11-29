@@ -6,7 +6,9 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {NativeBaseProvider} from 'native-base'
 
+import LoginScreen from './components/screens/LoginScreen';
 import HomeScreen from './components/screens/HomeScreen';
 import GuiaScreen from './components/screens/GuiaScreen';
 import HoyScreen from './components/screens/HoyScreen';
@@ -16,6 +18,7 @@ const Tab = createBottomTabNavigator();
 
 function App() {
   return (
+    <NativeBaseProvider>
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false,
        tabBarStyle: {backgroundColor: '#fff',
@@ -23,7 +26,18 @@ function App() {
                       height: 60,
                       borderTopLeftRadius: 15,
                       borderTopRightRadius: 15}}}
-                      tabBarOptions={{activeTintColor: '#ff4800'}}>
+                      screenOptions={{activeTintColor: '#ff4800'}}>
+
+        <Tab.Screen name="Login" component={LoginScreen}
+        options={{title:'Bienvenidos',
+          tabBarLabel: 'Login',
+          tabBarIcon: ({ tintColor }) => (
+            <Image
+              source={require('./assets/icons/sesion.jpg')}
+              style={{width: 24, height: 24, tintColor: tintColor}}
+            />)
+        }} />
+
         <Tab.Screen name="Home" component={HomeScreen}
         options={{
           tabBarLabel: 'Inicio',
@@ -59,6 +73,7 @@ function App() {
         }}/>
       </Tab.Navigator>
     </NavigationContainer>
+    </NativeBaseProvider>
   );
 }
 
