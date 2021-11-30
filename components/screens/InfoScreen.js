@@ -1,26 +1,40 @@
-// In App.js in a new project
-
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
+import Carousel from './Carousel';
+import { LinearGradient } from 'expo-linear-gradient';
 
-function InfoScreen({ navigation }) {
+export default function InfoScreen() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Info Screen</Text>
-      
-    </View>
-  );
+
+    <SafeAreaView style={styles.container}>
+
+      <LinearGradient
+        colors={['rgba(0,0,0,0.8)', 'transparent']}
+        style={styles.background}
+      />
+
+
+      <Carousel />
+
+    </SafeAreaView>
+
+  )
+
 }
 
-
-
-
-export default InfoScreen;
-
 const styles = StyleSheet.create({
-  clima: {
+  container: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 50,
+    
+  },
+  background: {
     position: 'absolute',
+    left: 0,
+    right: 0,
     top: 0,
-    left: 10,
-  }
+    height: 300,
+  },
 });
