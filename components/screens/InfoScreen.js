@@ -24,7 +24,7 @@ export default function InfoScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#6f4f28',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 50,

@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     width: 500,
     height: 700,
     zIndex: 0,
+    top:-25
   },
   vivi: {
     position: 'absolute',

@@ -13,7 +13,7 @@ const Carousel =() => {
     <View>
     <CarouselComp
     
-    layout ="tinder"
+    layout ="default"
     layoutCardOffset={9}
     ref={isCarousel}
     data={data}

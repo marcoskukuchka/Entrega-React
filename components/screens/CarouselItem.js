@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         width: ITEM_WIDTH,
         paddingBottom: 40,
         elevation:7,
-        alignItems:'center',
+        
     },
     image:{
         width: ITEM_WIDTH,
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     header:{
         color:'#222',
         fontSize:18,
-        fontWeight:'bold',
+        fontFamily:'Montserrat',
         paddingLeft:20,
         paddingTop:20
     },
