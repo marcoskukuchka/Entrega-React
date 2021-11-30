@@ -1,4 +1,4 @@
-// In App.js in a new project
+/* // In App.js in a new project
 
 import * as React from 'react';
 import { View, Text, Button } from 'react-native';
@@ -60,4 +60,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; */

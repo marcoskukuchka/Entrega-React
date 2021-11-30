@@ -15,8 +15,71 @@ import HoyScreen from './components/screens/HoyScreen';
 import InfoScreen from './components/screens/InfoScreen';
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function HomeTabs() {
+  return (
+   
+    <Tab.Navigator screenOptions={{ headerShown: false,
+      tabBarStyle: {backgroundColor: '#fff',
+                     position: 'absolute',
+                     height: 60,
+                     borderTopLeftRadius: 15,
+                     borderTopRightRadius: 15}}}
+                     screenOptions={{activeTintColor: '#ff4800'}}>
+
+       <Tab.Screen name="Home" component={HomeScreen}
+       options={{
+         tabBarLabel: 'Inicio',
+         tabBarIcon: ({ tintColor }) => (
+           <Image
+             source={require('./assets/icons/home.png')}
+             style={{width: 24, height: 24, tintColor: tintColor}}
+           />)
+       }} />
+       <Tab.Screen name="Guia" component={GuiaScreen} options={{
+         tabBarLabel: 'Guia',
+         tabBarIcon: ({ tintColor }) => (
+           <Image
+             source={require('./assets/icons/compas.png')}
+             style={{width: 24, height: 24, tintColor: tintColor}}
+           />)
+       }} />
+       <Tab.Screen name="Hoy" component={HoyScreen} options={{
+         tabBarLabel: 'Hoy',
+         tabBarIcon: ({ tintColor }) => (
+           <Image
+             source={require('./assets/icons/news.png')}
+             style={{width: 24, height: 24, tintColor: tintColor}}
+           />)
+       }} />
+       <Tab.Screen name="Info" component={InfoScreen} options={{
+         tabBarLabel: 'Info',
+         tabBarIcon: ({ tintColor }) => (
+           <Image
+             source={require('./assets/icons/info.png')}
+             style={{width: 24, height: 24, tintColor: tintColor}}
+           />)
+       }}/>
+     </Tab.Navigator>
+    
+  );
+}
 
 function App() {
+  return (
+    <NativeBaseProvider>
+    <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Home" component={HomeTabs} />
+    </Stack.Navigator>
+    </NavigationContainer>
+    </NativeBaseProvider>
+  );
+}
+
+/* function App() {
   return (
     <NativeBaseProvider>
     <NavigationContainer>
@@ -75,6 +138,6 @@ function App() {
     </NavigationContainer>
     </NativeBaseProvider>
   );
-}
+} */
 
 export default App;
