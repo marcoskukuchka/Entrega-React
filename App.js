@@ -15,39 +15,17 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-
-function getHeaderTitle(route) {
-  // If the focused route is not found, we need to assume it's the initial screen
-  // This can happen during if there hasn't been any navigation inside the screen
-  // In our case, it's "Feed" as that's the first screen inside the navigator
-  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
-
-  switch (routeName) {
-    case 'Home':
-      return 'Prueba';
-    case 'Guia':
-      return 'Prueba2';
-    case 'Info':
-      return 'Prueba3';
-  }
-}
-
 function HomeTabs({navigation,route}) {
 
-  React.useLayoutEffect(() => {
-    navigation.setOptions({ headerTitle: getHeaderTitle(route) });
-  }, [navigation, route]);
   return (
    
-    <Tab.Navigator screenOptions={{ headerShown: false,
+    <Tab.Navigator initialRouteName='Home' screenOptions={{ headerShown: false,
       tabBarStyle: {backgroundColor: '#fff',
-                     position: 'absolute',
-                     height: 60,
-                     borderTopLeftRadius: 15,
-                     borderTopRightRadius: 15}}}
-                     >
-
+                      position: 'absolute',
+                      height: 60,
+                      borderTopLeftRadius: 15,
+                      borderTopRightRadius: 15,}}}
+                      tabBarOptions={{activeTintColor: '#ff4800'}}>
    
 
        <Tab.Screen name="Home" component={HomeScreen}
