@@ -1,14 +1,10 @@
-// In App.js in a new project
-
 import * as React from 'react';
-import { View, Text, Button, Image } from 'react-native';
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { View, Image } from 'react-native';
+import { NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {NativeBaseProvider} from 'native-base'
 import {useFonts} from '@use-expo/font'
-
 import LoginScreen from './components/screens/LoginScreen';
 import HomeScreen from './components/screens/HomeScreen';
 import GuiaScreen from './components/screens/GuiaScreen';
@@ -18,26 +14,41 @@ import InfoScreen from './components/screens/InfoScreen';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function HomeTabs() {
+
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+
+function getHeaderTitle(route) {
+  // If the focused route is not found, we need to assume it's the initial screen
+  // This can happen during if there hasn't been any navigation inside the screen
+  // In our case, it's "Feed" as that's the first screen inside the navigator
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+
+  switch (routeName) {
+    case 'Home':
+      return 'Prueba';
+    case 'Guia':
+      return 'Prueba2';
+    case 'Info':
+      return 'Prueba3';
+  }
+}
+
+function HomeTabs({navigation,route}) {
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({ headerTitle: getHeaderTitle(route) });
+  }, [navigation, route]);
   return (
    
-    <Tab.Navigator initialRouteName='Home' screenOptions={{ headerShown: false,
+    <Tab.Navigator screenOptions={{ headerShown: false,
       tabBarStyle: {backgroundColor: '#fff',
                      position: 'absolute',
                      height: 60,
                      borderTopLeftRadius: 15,
                      borderTopRightRadius: 15}}}
-                     screenOptions={{activeTintColor: '#ff4800'}}>
+                     >
 
-    <Tab.Screen name="Login" component={LoginScreen}
-        options={{title:'Bienvenidos',
-          tabBarLabel: 'Login',
-          tabBarIcon: ({ tintColor }) => (
-            <Image
-              source={require('./assets/icons/sesion.jpg')}
-              style={{width: 24, height: 24, tintColor: tintColor}}
-            />)
-        }} />
+   
 
        <Tab.Screen name="Home" component={HomeScreen}
        options={{
@@ -73,7 +84,7 @@ function HomeTabs() {
            />)
        }}/>
      </Tab.Navigator>
-    
+     
   );
 }
 
