@@ -38,7 +38,7 @@ function HomeTabs({navigation,route}) {
            />)
        }} />
        <Tab.Screen name="Guia" component={GuiaScreen} options={{
-         tabBarLabel: 'Guia',
+         tabBarLabel: 'Galeria',
          tabBarIcon: ({ tintColor }) => (
            <Image
              source={require('./assets/icons/compas.png')}

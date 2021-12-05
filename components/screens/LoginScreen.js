@@ -7,7 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 function LoginScreen({ navigation }) {
   const [request, response, promptAsync] = Google.useAuthRequest({
-    expoClientId: '773053063323-25eama2p8bvddab5tofnm8nrjv3iu6pt.apps.googleusercontent.com',
+    expoClientId: '1092988200825-sqlf51ombt9sr6v72ei9ml9hgot5fsh0.apps.googleusercontent.com',
   });
 
   React.useEffect(() => {
@@ -20,8 +20,8 @@ function LoginScreen({ navigation }) {
   return (
 
     <View style={{ flex: 1, alignItems: 'center' }}>
-      <Image source={{ uri: 'https://elcomodorense.net/wp-content/uploads/2020/01/WhatsApp-Image-2019-11-16-at-20.57.08.jpeg' }} style={{ position: 'absolute', width: 500, height: 900, zIndex: -1, }} />
-      <Text style={{ fontSize: 50, marginVertical: 50, color: 'white', fontFamily: 'Montserrat' }}>Bienvenidos</Text>
+      <Image source={{ uri: 'https://www.turismoviajar.com/wp-content/uploads/2020/06/comodoro-rivadavia.jpg' }} style={{ position: 'absolute',alignSelf: 'stretch', width: 500, height: 900, zIndex: -1, }} />
+      <Text style={{ fontSize: 50, marginVertical: 50, color: 'white', fontFamily: 'Montserrat', paddingTop: 50, }}>Bienvenidos</Text>
       
       <View style={{ marginTop: 250 }}>
 
@@ -32,7 +32,7 @@ function LoginScreen({ navigation }) {
         </TouchableOpacity>
 
       </View>
-      <Text style={{ fontSize: 50, marginVertical: 160, color: 'white', textAlign:'center', fontFamily: 'Montserrat' }}>Comodoro Turismo</Text>
+      <Text style={{ fontSize: 50, marginVertical: 100, color: 'white', textAlign:'center', fontFamily: 'Montserrat' }}>Comodoro Turismo</Text>
     </View>
   );
 }

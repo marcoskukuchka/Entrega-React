@@ -14,7 +14,7 @@ export default function InfoScreen() {
       />
 
 
-      <Carousel />
+      <Carousel style={styles.carrousel}/>
 
     </SafeAreaView>
 
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#6f4f28',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 50,
+    padding: 150,
     
   },
   background: {
@@ -37,4 +37,7 @@ const styles = StyleSheet.create({
     top: 0,
     height: 300,
   },
+  carrousel: {
+    
+  }
 });

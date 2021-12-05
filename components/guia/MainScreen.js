@@ -1,10 +1,10 @@
 import React, {useState, useEffect, useCallback } from 'react';
 import { View, Text, FlatList, Image, ActivityIndicator, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import Items from './Items'
 import axios from 'axios';
 
-const API_URL = 'https://comodoro-admin.herokuapp.com/sections/1';
+const API_URL = 'https://comodoro-admin.herokuapp.com/posts?categories.id=7';
 
 const Item = ({ title }) => (
   <View style={styles.item}>
@@ -29,13 +29,11 @@ function MainScreen({ navigation }) {
   React.useEffect(() => {
     axios.get(API_URL).then((response) => {
       setData(response.data);
-      console.log(response.data);
     });
   }, []);
 
   if (!data) return null;
 
-console.log(data.promoted_image.formats.large.url)
   return (
     
     <SafeAreaView style={{ flex: 1 }}>
@@ -45,20 +43,25 @@ console.log(data.promoted_image.formats.large.url)
         <Image
             style={styles.heroImg}
             source={{
-            uri: data.promoted_image.formats.large.url,
+            uri: data[0].categories[0].image.formats.large.url,
           }}
         />
 
-          <Text style={styles.title}>{data.title}</Text>
-          <Text style={styles.lead}>{data.description}</Text>
+          <Text style={styles.title}>{data[0].categories[0].title}</Text>
+          <Text style={styles.lead}></Text>
 
       </View>
-      <FlatList
-        data={data.categories}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        style={styles.flat}
-      />
+      <View style={styles.contenedorLista}>
+
+        <FlatList
+          data={data}
+          keyExtractor={item => item.id}
+          renderItem = {({ item }) => (
+                      <Items item={item} onPress={() => handlePress(item)}/>
+                  )}
+          style={styles.flat}
+        />
+      </View>
     </SafeAreaView>
 
      
@@ -105,11 +108,11 @@ const styles = StyleSheet.create({
     textShadowRadius: 10
     
   },
+  contenedorLista: {
+    justifyContent: 'center',
+  },
   flat:{
-    flex: 2,
-    marginHorizontal: 100,
-    color: '#000',
-    backgroundColor: '#000'
+    top: -80,
   }
   
 });
