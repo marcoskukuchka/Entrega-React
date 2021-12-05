@@ -1,4 +1,4 @@
-// In App.js in a new project
+/* // In App.js in a new project
 
 import * as React from 'react';
 import { View, Text, Button } from 'react-native';
@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import LoginScreen from './components/screens/LoginScreen';
 import HomeScreen from './components/screens/HomeScreen';
 import GuiaScreen from './components/screens/GuiaScreen';
 import HoyScreen from './components/screens/HoyScreen';
@@ -17,6 +18,17 @@ const Tab = createBottomTabNavigator();
 function App() {
   return (
     <NavigationContainer>
+
+      <Tab.Navigator screenOptions={{ headerShown: false }}/>
+        <Tab.Screen name="Login" component={LoginScreen}
+        options={{
+          tabBarLabel: 'Login',
+          tabBarIcon: ({ tintColor }) => (
+            <MaterialCommunityIcons name="login" color={'black'} size={size} />
+            ),
+        }} />
+
+
       <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen name="Home" component={HomeScreen}
         options={{
@@ -48,4 +60,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; */

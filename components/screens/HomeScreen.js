@@ -43,46 +43,46 @@ function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-      <Video
-        ref={video}
-        style={styles.backgroundVideo}
-          source={
-            require('../../assets/video/VideoWebsite.mp4')
-          }
-          rate={1.0}
-          volume={1.0}
-          isMuted={true}
-          resizeMode='cover'
-          isLooping={true}
-          shouldPlay={true}        
-        />
-        <Image
-          style={styles.comodoroLogo}
-          source={require('../../assets/logo-comodoro.png')}
-        />
-        <Text style={styles.vivi}>Vivi</Text>
-        <Text style={styles.title}>Comodoro Turismo</Text>
-        <TouchableOpacity
-          style={styles.shareIcon}
-          onPress={() => onSharePress(shareOptions)}>
-          <Image
-            style={styles.shareIconImg}
-            source={require('../../assets/icons/share.png')}
+        <Video
+          ref={video}
+          style={styles.backgroundVideo}
+            source={
+              require('../../assets/video/VideoWebsite.mp4')
+            }
+            rate={1.0}
+            volume={1.0}
+            isMuted={true}
+            resizeMode='cover'
+            isLooping={true}
+            shouldPlay={true}        
           />
-        </TouchableOpacity>
-        {
-          loading ? <ActivityIndicator/> : (
-            
-            <View style={styles.containerWeather}>
-              <Text style={styles.temp}>{kToC(weather.main.temp)}º</Text>
-              <Image
-                style={styles.weatherLogo}
-                source={{uri: 'http://openweathermap.org/img/w/' +
-                weather.weather[0].icon + '.png'}}
-              />
-            </View>
-          )
-        }
+          <Image
+            style={styles.comodoroLogo}
+            source={require('../../assets/logo-comodoro.png')}
+          />
+          <Text style={styles.vivi}>Vivi</Text>
+          <Text style={styles.title}>Comodoro Turismo</Text>
+          <TouchableOpacity
+            style={styles.shareIcon}
+            onPress={() => onSharePress(shareOptions)}>
+            <Image
+              style={styles.shareIconImg}
+              source={require('../../assets/icons/share.png')}
+            />
+          </TouchableOpacity>
+          {
+            loading ? <ActivityIndicator/> : (
+              
+              <View style={styles.containerWeather}>
+                <Text style={styles.temp}>{kToC(weather.main.temp)}º</Text>
+                <Image
+                  style={styles.weatherLogo}
+                  source={{uri: 'http://openweathermap.org/img/w/' +
+                  weather.weather[0].icon + '.png'}}
+                />
+              </View>
+            )
+          }
       </View>
     </SafeAreaView>
   );
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     width: 500,
     height: 700,
     zIndex: 0,
+    top:25
   },
   vivi: {
     position: 'absolute',
